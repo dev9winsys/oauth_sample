@@ -1,5 +1,6 @@
 # OAuth2.0の練習レポジトリ
 フレームワーク：nestjs
+DB：PostgreSQL
 
 ## 機能一覧
 ・ユーザ登録・変更・削除<br>
