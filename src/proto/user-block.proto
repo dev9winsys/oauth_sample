@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package user_block;
+
+service UserBlockService {
+  rpc BlockUser (BlockUserRequest) returns (UserResponse);
+  rpc UnblockUser (UnblockUserRequest) returns (UserResponse);
+}
+
+message BlockUserRequest {
+  string user_id = 1;
+  string block_type = 2;
+  optional string reason = 3;
+  optional string block_release_date = 4;
+}
+
+message UnblockUserRequest {
+  string user_id = 1;
+}
+
+message UserResponse {
+  int32 id = 1;
+  string user_id = 2;
+  string email = 3;
+  string name = 4;
+  bool email_verified = 5;
+  bool delete_flag = 6;
+  string activity_status = 7;
+  string createdAt = 8;
+  string updatedAt = 9;
+}

@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package auth;
+
+service AuthService {
+  rpc IssueToken (IssueTokenRequest) returns (TokenResponse);
+  rpc RefreshToken (RefreshTokenRequest) returns (TokenResponse);
+  rpc RecordLoginFailure (RecordLoginFailureRequest) returns (LoginFailureResponse);
+}
+
+message IssueTokenRequest {
+  string user_id = 1;
+  repeated ServiceData services = 2;
+}
+
+message ServiceData {
+  string service_id = 1;
+  string service_name = 2;
+  repeated string permissions = 3;
+}
+
+message RefreshTokenRequest {
+  string token = 1;
+}
+
+message TokenResponse {
+  string access_token = 1;
+  string token_type = 2;
+  int32 expires_in = 3;
+}
+
+message RecordLoginFailureRequest {
+  string user_id = 1;
+  string ip_address = 2;
+}
+
+message LoginFailureResponse {
+  int32 failure_count = 1;
+  string message = 2;
+  bool blocked = 3;
+}

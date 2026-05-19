@@ -1,0 +1,17 @@
+services:
+  db:
+    container_name: postgres
+    image: postgres:latest
+    ports: 
+      - ${DB_PORT}:5432
+    volumes:
+      - auth_postgres:/var/lib/postgresql
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      TZ: ${DB_TZ}
+
+volumes:
+  auth_postgres:

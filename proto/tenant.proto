@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package tenant;
+
+service TenantService {
+  rpc CreateTenant (CreateTenantRequest) returns (TenantResponse);
+  rpc UpdateTenant (UpdateTenantRequest) returns (TenantResponse);
+  rpc DeleteTenant (DeleteTenantRequest) returns (TenantResponse);
+}
+
+message CreateTenantRequest {
+  string name = 1;
+  string tenant_start_at = 2;
+  string tenant_end_at = 3;
+  optional bool auto_user_approval = 4;
+  optional int32 data_retention_days = 5;
+  optional string image_url = 6;
+}
+
+message UpdateTenantRequest {
+  string id = 1;
+  optional string name = 2;
+  optional string tenant_start_at = 3;
+  optional string tenant_end_at = 4;
+  optional bool auto_user_approval = 5;
+  optional int32 data_retention_days = 6;
+  optional string image_url = 7;
+}
+
+message DeleteTenantRequest {
+  string id = 1;
+}
+
+message TenantResponse {
+  int32 id = 1;
+  string tenant_id = 2;
+  string name = 3;
+  string tenant_start_at = 4;
+  string tenant_end_at = 5;
+  bool delete_flag = 6;
+  bool auto_user_approval = 7;
+  int32 data_retention_days = 8;
+  optional string image_url = 9;
+  string createdAt = 10;
+  string updatedAt = 11;
+}

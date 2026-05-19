@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+
+    # 通常の定期アップデートはメジャーバージョンのみ
+    groups:
+      major-updates:
+        update-types:
+          - "major"
+
+    # PRが増えすぎないように上限
+    open-pull-requests-limit: 1

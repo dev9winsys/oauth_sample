@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package service;
+
+service ServiceService {
+  rpc CreateService (CreateServiceRequest) returns (ServiceResponse);
+  rpc UpdateService (UpdateServiceRequest) returns (ServiceResponse);
+  rpc SoftDeleteService (SoftDeleteServiceRequest) returns (Empty);
+}
+
+message CreateServiceRequest {
+  string user_id = 1;
+  string service_name = 2;
+  string home_url = 3;
+  string service_start_at = 4;
+  optional string service_end_at = 5;
+}
+
+message UpdateServiceRequest {
+  string id = 1;
+  optional string service_name = 2;
+  optional string home_url = 3;
+  optional string service_start_at = 4;
+}
+
+message SoftDeleteServiceRequest {
+  string id = 1;
+}
+
+message ServiceResponse {
+  int32 id = 1;
+  string service_id = 2;
+  int32 user_id = 3;
+  string service_name = 4;
+  string home_url = 5;
+  string service_start_at = 6;
+  string service_end_at = 7;
+  string createdAt = 8;
+  string updatedAt = 9;
+}
+
+message Empty {}
