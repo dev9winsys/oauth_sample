@@ -11,5 +11,12 @@ updates:
         update-types:
           - "major"
 
+    # @nestjs/typeorm が typeorm 0.3 系を peer 依存として要求しているため、
+    # typeorm のメジャー更新PRは作成しない
+    ignore:
+      - dependency-name: "typeorm"
+        update-types:
+          - "version-update:semver-major"
+
     # PRが増えすぎないように上限
     open-pull-requests-limit: 1
